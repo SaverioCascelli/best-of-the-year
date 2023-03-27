@@ -3,7 +3,9 @@ package com.experis.bestoftheyear.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +31,44 @@ public class BestOfYearController {
         .collect(Collectors.joining(", "));
     model.addAttribute("movies",movies);
     return "movies";
+  }
+  
+  @GetMapping("/movie/{id}")
+  public String movieById(Model model, @PathVariable("id") int movieId){
+    String founded = null;
+    List<Movie> movieList = getBestMovies();
+    Movie movieSearch = movieList.stream()
+        .filter(movie -> movie.getId() == movieId)
+        .findFirst()
+        .orElse(null);
+  
+    if (movieSearch == null) {
+      founded = "Not Founded";
+    } else {
+      founded = movieSearch.getName();
+    }
+    
+    model.addAttribute("movieDetail" ,founded);
+    
+    return "showmovie";
+  }
+  
+  @GetMapping("/song/{id}")
+  public String songById(Model model, @PathVariable("id") int songId){
+    String founded = null;
+    List<Song> songList =getBestSongs();
+    Song songSearch = songList.stream()
+        .filter(movie -> movie.getId() == songId)
+        .findFirst()
+        .orElse(null);
+
+    if (songSearch== null) {
+      founded = "Not Founded";
+    } else {
+      founded = songSearch.getName();
+    }
+    model.addAttribute("songDetail" ,founded);
+    return "showsong";
   }
   
   @GetMapping("/songs") public String songs(Model model){
