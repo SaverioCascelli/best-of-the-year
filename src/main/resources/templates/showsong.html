@@ -8,9 +8,12 @@
     <th:block th:replace="~{fragments :: resources}"></th:block>
     <title>Document</title>
 </head>
-<body>
-<nav th:replace="~{fragments :: navBar}"></nav>
-<h1>Song:</h1>
-<p th:text= "${songDetail}"></p>
+<body class="container">
+<div class="row">
+
+    <nav th:replace="~{fragments :: navBar}"></nav>
+    <h1>Song:</h1>
+    <p th:text= "${songDetail}"></p>
+</div>
 </body>
 </html>

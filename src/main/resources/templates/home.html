@@ -8,10 +8,19 @@
     <th:block th:replace="~{fragments :: resources}"></th:block>
     <title>Document</title>
 </head>
-<body>
-<nav th:replace="~{fragments :: navBar}"></nav>
+<body class="container ">
 
-<h1>Best of the year by: <span th:text = "${name}"></span></h1>
+<div class="row">
+    <nav th:replace="~{fragments :: navBar}" ></nav>
+    <div class="card" style="width: 18rem;">
+        <img th:src="@{/faro.jpg}" class="card-img-top" >
+        <div class="card-body">
+            <h5 class="card-title">Best of the year by:</h5>
+            <p class="card-text" th:text=" ${name}"></p>
+        </div>
+    </div>
+
+</div>
 
 
 </body>

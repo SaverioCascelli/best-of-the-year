@@ -8,13 +8,16 @@
     <th:block th:replace="~{fragments :: resources}"></th:block>
     <title>Document</title>
 </head>
-<body bgcolor="gray">
-<nav th:replace="~{fragments :: navBar}"></nav>
-<h1>Songs:</h1>
-<ul>
-<li th:each="song: ${songs}" >
-    <a th:href="@{/song/{id}(id=${song.id})}"  th:text="|name: ${song.name} , id: ${song.id}|"></a>
-</li>
-</ul>
+<body class="container">
+<div class="row">
+
+    <nav th:replace="~{fragments :: navBar}"></nav>
+    <h1>Songs:</h1>
+    <ul class="list-group">
+        <li th:each="song: ${songs}" class="list-group-item" >
+            <a th:href="@{/song/{id}(id=${song.id})}"  th:text="|name: ${song.name} , id: ${song.id}|"></a>
+        </li>
+    </ul>
+</div>
 </body>
 </html>
