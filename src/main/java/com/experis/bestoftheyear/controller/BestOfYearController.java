@@ -24,12 +24,14 @@ public class BestOfYearController {
   
   @GetMapping("/movies")
   public String movies(Model model){
-    String movies = "";
-    List<Movie> moviesList = getBestMovies();
-    movies = moviesList.stream()
-        .map(Movie::getName)
-        .collect(Collectors.joining(", "));
+//    String movies = "";
+//    List<Movie> moviesList = getBestMovies();
+//    movies = moviesList.stream()
+//        .map(Movie::getName)
+//        .collect(Collectors.joining(", "));
+    List<Movie> movies = getBestMovies();
     model.addAttribute("movies",movies);
+    
     return "movies";
   }
   
@@ -72,11 +74,12 @@ public class BestOfYearController {
   }
   
   @GetMapping("/songs") public String songs(Model model){
-    String songs = "";
-    List<Song> songsList = getBestSongs();
-    songs = songsList.stream()
-        .map(Song::getName)
-        .collect(Collectors.joining(", "));
+//    String songs = "";
+//    List<Song> songsList = getBestSongs();
+//    songs = songsList.stream()
+//        .map(Song::getName)
+//        .collect(Collectors.joining(", "));
+    List<Song> songs = getBestSongs();
     model.addAttribute("songs",songs);
     return "songs";
   }
