@@ -9,7 +9,7 @@
     <title>Title</title>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg bg-body-tertiary" th:fragment="navBar">
+<nav class="navbar navbar-expand-lg bg-body-tertiary" th:fragment="navBar(current)">
     <div class="container-fluid">
         <a class="navbar-brand" th:href="@{/}">Best of </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -18,10 +18,16 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a th:href="@{/movies}" class="nav-link">movies</a>
+                    <a th:href="@{/movies}"
+                       class="nav-link"
+                       th:classAppend="${current=='movie'} ? active : not-active"
+                    >movies</a>
                 </li>
                 <li class="nav-item">
-                    <a th:href="@{/songs}" class="nav-link">songs</a>
+                    <a th:href="@{/songs}"
+                       class="nav-link"
+                    th:classAppend="${current == 'song'} ? active : not-active"
+                    >songs</a>
                 </li>
 
             </ul>

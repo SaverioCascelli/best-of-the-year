@@ -11,7 +11,7 @@
 <body class="container">
 <div class="row">
 
-    <nav th:replace="~{fragments :: navBar}"></nav>
+    <nav th:replace="~{fragments :: navBar('song')}"></nav>
     <h1>Songs:</h1>
     <ul class="list-group">
         <li th:each="song: ${songs}" class="list-group-item" >
